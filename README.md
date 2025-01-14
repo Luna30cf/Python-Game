@@ -21,43 +21,28 @@
 - [IV - Crédits](#iv---crédits)
 
 
-## I - Histoire
+## Synopsis :
+Vous vous réveillez dans une petite maison au cœur d’un village étrange, votre mémoire embrouillée et un journal de bord à vos côtés. Sur la première page, une seule phrase attire votre attention :
 
-### **Introduction et contexte :**
+"Étant le seul épargné, je dois désactiver la malédiction de Xérath pour sauver les habitants."
 
-Le joueur commence avec une mémoire floue. Il se réveille dans une petite maison au cœur d’un village étrange. Il ne se souvient pas de la raison pour laquelle il se trouve là. Il trouve un journal de bord mis en évidence dans la seule pièce de la maison dans lequel il y a marqué: "Étant le seul épargné, je dois désactiver la malédiction de Xérath pour sauver les habitants"
+En sortant de la maison, vous découvrez un village peuplé d’animaux qui se comportent comme des humains : un chat aux lunettes plongé dans un livre, un chien jouant de la musique... Mais aucun ne semble vous reconnaître, vous traitant comme un inconnu.
 
-### **Phase 1 - Exploration du village :**   
-*Le joueur sort de la maison et remarque que le village est rempli d'animaux qui se comportent étrangement comme des humains. Un chat qui porte des lunettes et lit un livre, un chien qui joue de la musique, etc. Mais ces animaux ne reconnaissent pas le joueur. Ils l’accueillent comme un inconnu.*
-*Un des villageois lui dit "bonjour si tu es venu visiter le village je te conseille d'aller goûter les bons poissons de M.CAT, faire une balade autour du lac Apofée ou bien aller voir l'architecture de l'ancien temple Xérath". Le joueur fait donc une assimilation entre le nom de la malédiction et le nom du temple.*
+**Exploration et découverte :**
+Intrigué, vous explorez le village et apprenez l’existence de la grotte de Xérath, un lieu ancien et mystique où la malédiction semble avoir pris racine. À l’intérieur de la grotte, vous découvrez un cristal brisé, incomplet. Un habitant du village vous offre un fragment de pierre qu’il a trouvé, et vous comprenez que d’autres morceaux sont éparpillés dans le village et ses environs.
 
+**Quête des fragments :**
+Vous arpentez les lieux emblématiques du village – un lac scintillant, un immense arbre central, et d’autres endroits enchanteurs – à la recherche des fragments manquants. À chaque découverte, le mystère se dévoile un peu plus, et la grotte semble vous appeler, comme pour révéler un secret enfoui.
 
-### **Phase 2 - Premiers indices et fragments :**   
-*Le joueur se rend devant le temple. Le nom Xérath y est mentionné sur une pancarte. En entrant dans le temple il voit un cristal incomplet auquel il manque donc des morceaux.*
-*Il repart bredouille mais le but est vraiment qu'il discute avec les gens du village, un d'entre eux lui dit "j'ai trouvé ça en me promenant dans le village c'est joli tu le veux ?" et lui donne un bout de pierre ce qui fait comprendre au joueur qu'il doit explorer le village pour en trouver d'autres.*
+**Révélation :**
+Une fois le cristal reconstitué, vous retournez dans la grotte de Xérath. Dès que vous placez le dernier fragment, une lumière aveuglante vous enveloppe. Lorsque vous reprenez vos esprits, vous réalisez que vous avez changé : vous êtes devenu l’un des animaux du village, une créature semblable à ceux que vous tentiez de sauver.
 
+De retour au village, les habitants vous accueillent chaleureusement, vous appelant par un nouveau nom et semblant vous reconnaître. Peu à peu, vous comprenez que la malédiction ne pesait pas sur eux, mais sur vous. Vous aviez été transformé en humain, perdu votre mémoire, et oublié que c’était votre propre humanité que vous cherchiez à retrouver.
 
-### **Phase 3 - Quête des fragments :**   
-*Le joueur part en quête des fragments du cristal de la malédiction. Il explore divers lieux du village, dont un lac, un grand arbre au centre du village, etc.*
+**Morale :**
+Vous choisissez d’accepter votre nouvelle forme et de vivre parmi les villageois, réalisant que la valeur et la "normalité" d’un être ne dépendent pas de son apparence, mais de sa capacité à nouer des relations sincères et à trouver le bonheur.
 
-### **Phase 4 - Révélation au temple :**   
-*Une fois tous les fragments réunis, le joueur se rend au temple ancien, situé dans un endroit reculé du village. La pierre réagit; un flash lumineux envahit l’espace (fond blanc).*
-*L'image réapparait mais quelque chose ne va pas. Le joueur a été transformé en animal. Il est devenu une créature de la même forme que les villageois qu'il voulait sauver.*
-
-### **Phase 5 - Retour dans le village et la découverte de la vérité :**   
-*Choc et déception : Le joueur, maintenant sous forme animale, sort du temple et retourne dans le village. Il s'approche des "villageois", espérant que eux ont été changé sous forme humaine, mais ils sont toujours des animaux, se comportant toujours de la même manière.*
-*Lorsqu’il leur parle, ils le reconnaissent immédiatement, l’appelant par son nouveau nom. Ils savent exactement qui il est.*
-
-### **Révélation :**   
-*Le joueur réalise alors que c’est lui qui n’était pas normal. Il se rend compte qu'il était un humain transformé en animal dès le début que c'était sur lui que la malédiction avait était jetée et que c'était à lui de la briser pour se changer lui-même et non changer les autres.*
-*Il avait oublié son passé. Il avait toujours cherché à rendre les autres "humains" sans comprendre que lui-même avait perdu son humanité bien avant.*
-
- 
-*Accepter sa nouvelle forme et vivre parmi les villageois, en comprenant que ce n’est pas la forme humaine qui détermine la "normalité" ou la "valeur" d’un être vivant, mais plutôt son comportement, son bonheur et ses relations avec les autres.*
-
-### **Morale :**   
-*L’histoire met en lumière l’idée que ce qui est considéré comme "normal" ou "humain" n’est pas nécessairement meilleur que d’autres formes de vie. Le joueur apprend que parfois, la "perfection" que nous recherchons (comme la forme humaine) peut être une illusion.*
-
+Ainsi, vous apprenez que la perfection que vous recherchiez n’était qu’une illusion et que l’acceptation de soi est la véritable clé de la paix intérieure.
 
 ## II Fonctionnement
 
