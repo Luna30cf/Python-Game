@@ -8,7 +8,7 @@
 ## Sommaire
 
 - [I - Histoire](#i---histoire)
-    - [Introduction](#introduction-et-contexte-)
+    - [Synopis](#introduction-et-contexte-)
     - [Phase 1](#phase-1---exploration-du-village-)
     - [Phase 2](#phase-2---premiers-indices-et-fragments-)
     - [Phase 3](#phase-3---quête-des-fragments-)
@@ -20,8 +20,9 @@
 - [III - Répartition](#iii---répartition)
 - [IV - Crédits](#iv---crédits)
 
+## I - Histoire
 
-## Synopsis :
+### Synopsis :
 Vous vous réveillez dans une petite maison au cœur d’un village étrange, votre mémoire embrouillée et un journal de bord à vos côtés. Sur la première page, une seule phrase attire votre attention :
 
 "Étant le seul épargné, je dois désactiver la malédiction de Xérath pour sauver les habitants."
