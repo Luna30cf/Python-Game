@@ -3,8 +3,9 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "grotte.tmx",
+    "activeFile": "jeux de tuiles/map.tmx",
     "expandedProjectPaths": [
+        "jeux de tuiles",
         "Tiny Wonder Forest 1.0",
         "."
     ],
@@ -16,6 +17,9 @@
         "2.tsx": {
             "scaleInDock": 0.5,
             "scaleInEditor": 1
+        },
+        "Basic_Grass_Biom_things.tsx": {
+            "scaleInDock": 1
         },
         "C:/Users/7luna/Documents/YnovB2/python/Python-Game/Basic_Grass_Biom_things.tsx": {
             "scaleInDock": 1
@@ -30,8 +34,8 @@
             "scale": 0.5640625,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 354.57063711911354,
-                "y": -179.94459833795014
+                "x": 353.6842105263157,
+                "y": 436.1218836565097
             }
         },
         "C:/Users/7luna/Documents/YnovB2/python/Python-Game/MAP.tmx#spr_tileset_sunnysideworld_16px": {
@@ -70,6 +74,12 @@
             "scaleInDock": 1,
             "scaleInEditor": 0.125
         },
+        "Dungeon_B.tsx": {
+            "scaleInDock": 1
+        },
+        "Fences.tsx": {
+            "scaleInDock": 1
+        },
         "Fragments.tsx": {
             "scaleInDock": 0.5,
             "scaleInEditor": 1
@@ -77,6 +87,17 @@
         "Icon28.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "MAP.tmx": {
+            "scale": 0.6446428571428572,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 531.3019390581716,
+                "y": 496.398891966759
+            }
+        },
+        "MAP.tmx#spr_tileset_sunnysideworld_16px": {
+            "scaleInDock": 1
         },
         "V2 cristaux.tsx": {
             "scaleInDock": 1.5,
@@ -91,10 +112,12 @@
             "scaleInEditor": 0.33
         },
         "arbres et rochers.tsx": {
+            "dynamicWrapping": true,
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "background.tsx": {
+            "dynamicWrapping": true,
             "scaleInDock": 1
         },
         "background4b.tsx": {
@@ -102,8 +125,13 @@
             "scaleInEditor": 0.75
         },
         "barrières et bout de cailloux.tsx": {
+            "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "bridges.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
         },
         "cailloux.tsx": {
             "scaleInDock": 1,
@@ -113,21 +141,69 @@
             "scaleInDock": 5.5,
             "scaleInEditor": 1
         },
+        "farm.tsx": {
+            "scaleInDock": 1
+        },
+        "free_water_tiles1.tsx": {
+            "scaleInDock": 1
+        },
         "furniture.tsx": {
             "scaleInDock": 1.5,
             "scaleInEditor": 1
         },
         "grotte.tmx": {
-            "scale": 0.25,
-            "selectedLayer": 5,
+            "scale": 0.33,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 670,
-                "y": 1116
+                "x": 1028.7878787878788,
+                "y": 1033.3333333333333
+            }
+        },
+        "jeux de tuiles/Cristaux-Principaux.tsx": {
+            "scaleInDock": 0.33,
+            "scaleInEditor": 1
+        },
+        "jeux de tuiles/Fragments.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "jeux de tuiles/TEST.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 0.75
+        },
+        "jeux de tuiles/arbres et rochers.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "jeux de tuiles/background.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "jeux de tuiles/barrières et bout de cailloux.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "jeux de tuiles/cave.tsx": {
+            "scaleInEditor": 2
+        },
+        "jeux de tuiles/map.tmx": {
+            "scale": 0.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 789,
+                "y": 758
             }
         },
         "mainlev_build.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "market_assets.tsx": {
+            "scaleInDock": 1
+        },
+        "nature_assets.tsx": {
+            "scaleInDock": 1
         },
         "props1.tsx": {
             "scaleInDock": 0.25,
@@ -137,40 +213,51 @@
             "scaleInDock": 0.33,
             "scaleInEditor": 1
         },
+        "spr_deco_chicken_01_strip4.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "spr_tileset_sunnysideworld_16px.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
         "tiles.tsx": {
             "scaleInDock": 1.5,
             "scaleInEditor": 1
         }
     },
-    "last.externalTilesetPath": "C:/Users/7luna/Documents/YnovB2/python/Python-Game/Assets/assets tiled",
-    "last.imagePath": "C:/Users/7luna/Downloads",
-    "map.height": 70,
+    "last.externalTilesetPath": "C:/Users/7luna/Documents/YnovB2/python/Python-Game/Assets/assets tiled/jeux de tuiles",
+    "last.imagePath": "C:/Users/7luna/Documents/YnovB2/python/Python-Game/Assets/assets tiled/sources png",
+    "map.height": 96,
     "map.lastUsedFormat": "tmx",
-    "map.tileHeight": 32,
-    "map.tileWidth": 32,
-    "map.width": 50,
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 96,
     "openFiles": [
-        "grotte.tmx"
+        "jeux de tuiles/map.tmx",
+        "jeux de tuiles/TEST.tsx",
+        "grotte.tmx",
+        "MAP.tmx"
     ],
     "project": "pygame-project.tiled-project",
     "recentFiles": [
         "grotte.tmx",
-        "Fragments.tsx",
-        "Cristaux-Principaux.tsx",
-        "arbres et rochers.tsx",
-        "cailloux.tsx",
-        "background4b.tsx",
-        "barrières et bout de cailloux.tsx",
-        "mainlev_build.tsx",
-        "2.tsx",
-        "Cristaux.tsx",
-        "_edited_48_Minerals_Pixel_Art_Icons_Pack.tsx",
-        "V2 cristaux.tsx"
+        "jeux de tuiles/cave.tsx",
+        "jeux de tuiles/TEST.tsx",
+        "MAP.tmx",
+        "jeux de tuiles/map.tmx",
+        "jeux de tuiles/barrières et bout de cailloux.tsx",
+        "jeux de tuiles/Fragments.tsx",
+        "jeux de tuiles/Cristaux-Principaux.tsx",
+        "jeux de tuiles/background.tsx",
+        "jeux de tuiles/arbres et rochers.tsx",
+        "C:/Users/7luna/Documents/YnovB2/python/Python-Game/MAP.tmx",
+        "Fragments.tsx"
     ],
     "tileset.lastUsedFilter": "Fichiers de jeu de tuiles Tiled (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
-        "height": 32,
-        "width": 32
+        "height": 16,
+        "width": 16
     }
 }

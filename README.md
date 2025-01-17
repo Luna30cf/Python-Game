@@ -60,20 +60,28 @@ Ainsi, vous apprenez que la perfection que vous recherchiez n’était qu’une 
 
 ### Karl
 
-*  *Assets
+* *Assets* 
+
+***Code :***
+* *Tests avec pygame : fenêtre et interactions*
 
 
 ### Luna
 
 * *Readme*
-* *Assets*
+* *Assets* 
+
+***Code:***
+
+* *Affichage d'une map avec PyGame*
 
 
 ### Erika
 
 * *Assets*
 
-   
+
+
 ## IV - Crédits
 
 | Noms                         |                Adresses Mails |
@@ -81,3 +89,5 @@ Ainsi, vous apprenez que la perfection que vous recherchiez n’était qu’une 
 |**Luna COLOMBAN-FERNANDEZ**   |luna.colombanfernandez@ynov.com|
 |**Erika LAJUS**               |erika.lajus@ynov.com           |
 |**Karl DAVAL-LECLERCQ**       |karl.davalleclercq@ynov.com    |
+
+
