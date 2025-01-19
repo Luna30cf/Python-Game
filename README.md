@@ -107,7 +107,11 @@ https://www.python.org/downloads/
 
 <ins>*Code :*</ins>
 
-* *Sprite du personnage*
+* *Sprite du personnage et "villageois chat"*
+* *déplacements joueur avec les flèches du clavier*
+* *camera*
+* *définition interactions joueur - villageois (touche P pour Parler), joueur - lieu (touche E pour entrer), joueur - objets (touche R pour ramasser)
+
 
 
 
