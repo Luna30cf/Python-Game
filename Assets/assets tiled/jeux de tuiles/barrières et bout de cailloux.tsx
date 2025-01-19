@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset version="1.10" tiledversion="1.11.1" name="barrières et bout de cailloux" tilewidth="32" tileheight="32" tilecount="1024" columns="32">
- <image source="../sources png/barrières et bout de cailloux.png" width="1024" height="1024"/>
+ <image source="../sources_png/barrières et bout de cailloux.png" width="1024" height="1024"/>
 </tileset>
