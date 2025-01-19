@@ -1,34 +1,35 @@
 import pygame
 import pytmx
-from joueur import Joueur
-from interaction import InteractionManager
+from joueur import Joueur  # Assurez-vous que la classe Joueur est correctement importée
+from camera import Camera  # Assurez-vous que la classe Camera est correctement importée
 
+# Classe Tile pour encapsuler les objets avec un attribut 'rect'
+class Tile:
+    def __init__(self, rect):
+        self.rect = rect
+
+# Initialisation de Pygame
 pygame.init()
 
-# Charger la carte TMX
+# Définir un facteur de zoom (par exemple 1.5 pour agrandir la carte)
+zoom_factor = 1.5
+
+# Créer la fenêtre d'affichage avant de charger la carte
+map_width = 800  # Modifier en fonction de la taille de votre carte
+map_height = 600  # Modifier en fonction de la taille de votre carte
+
+screen = pygame.display.set_mode((map_width, map_height))
+
+# Chargement de la carte TMX après l'initialisation de la fenêtre
 tmx_data = pytmx.load_pygame('Assets/assets tiled/mapv2.tmx')
 
-# Dimensions de la carte
-screen = pygame.display.set_mode((800, 600))
-pygame.display.set_caption("Game")
-
 # Créer le joueur
-joueur = Joueur(400, 300, 5)
+joueur = Joueur(map_width // 2, map_height // 2, 5)  # Position initiale au centre de la carte
 
-# Initialiser les interactions
-interaction_manager = InteractionManager(joueur)
+# Créer la caméra avec zoom
+camera = Camera(map_width, map_height, tmx_data.width * tmx_data.tilewidth, tmx_data.height * tmx_data.tileheight, zoom_factor)
 
-# Ajouter les objets interactifs
-for obj in tmx_data.objects:
-    rect = pygame.Rect(obj.x, obj.y, obj.width, obj.height)
-    if obj.type == "maison":
-        interaction_manager.add_house(rect)
-    elif obj.type == "pnj":
-        interaction_manager.add_npc(rect)
-    elif obj.type == "objet":
-        interaction_manager.add_object(rect)
-
-# Boucle principale
+# Boucle principale du jeu
 clock = pygame.time.Clock()
 running = True
 while running:
@@ -36,38 +37,44 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+    # Récupérer les touches
     keys = pygame.key.get_pressed()
+
+    # Mettre à jour le joueur
     joueur.update(keys)
 
-    interaction_type, interactive_rect = interaction_manager.is_near_interactive()
-    if interaction_type == "house" and keys[pygame.K_e]:
-        interaction_manager.interact("house", interactive_rect)
-    elif interaction_type == "npc" and keys[pygame.K_p]:
-        interaction_manager.interact("npc", interactive_rect)
-    elif interaction_type == "object" and keys[pygame.K_r]:
-        interaction_manager.interact("object", interactive_rect)
+    # Mettre à jour la caméra en fonction du joueur
+    camera.update(joueur)
 
-    if interaction_type == "house":
-        interaction_manager.message = "Presse E pour entrer"
-    elif interaction_type == "npc":
-        interaction_manager.message = "Presse P pour parler"
-    elif interaction_type == "object":
-        interaction_manager.message = "Presse R pour ramasser"
+    # Afficher la carte et le joueur
+    screen.fill((0, 0, 0))  # Effacer l'écran avant de redessiner
 
-    # Affichage
-    screen.fill((0, 0, 0))
-    for layer in tmx_data.visible_layers:
+    # Dessiner la carte avec zoom
+    for layer in tmx_data.layers:
         if isinstance(layer, pytmx.TiledTileLayer):
-            for x, y, gid in layer:
-                tile = tmx_data.get_tile_image_by_gid(gid)
+            for x, y, tile in layer:
                 if tile:
-                    screen.blit(tile, (x * tmx_data.tilewidth, y * tmx_data.tileheight))
+                    # Obtenir l'image du tile en fonction de son GID
+                    tile_image = tmx_data.get_tile_image_by_gid(tile)
 
-    joueur.draw(screen)
-    font = pygame.font.Font(None, 36)
-    interaction_manager.draw_message(screen, font)
+                    if tile_image:
+                        # Calculer la position du tile
+                        tile_rect = pygame.Rect(x * tmx_data.tilewidth, y * tmx_data.tileheight, tmx_data.tilewidth, tmx_data.tileheight)
 
+                        # Créer un objet Tile avec le rect et l'utiliser dans apply
+                        tile_object = Tile(tile_rect)
+                        zoomed_rect = camera.apply(tile_object)  # Maintenant, vous passez un objet avec un attribut 'rect'
+                        screen.blit(pygame.transform.scale(tile_image, (int(tile_rect.width * zoom_factor), int(tile_rect.height * zoom_factor))), zoomed_rect)
+
+    # Dessiner le joueur avec zoom et caméra appliqués
+    joueur_rect = camera.apply(joueur)  # Appliquer le zoom et la caméra au joueur
+    screen.blit(pygame.transform.scale(joueur.image, (int(joueur.rect.width * zoom_factor), int(joueur.rect.height * zoom_factor))), joueur_rect)
+
+    # Actualiser l'écran
     pygame.display.flip()
+
+    # Contrôler le framerate
     clock.tick(60)
 
+# Quitter Pygame
 pygame.quit()
