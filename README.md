@@ -103,7 +103,7 @@ https://www.python.org/downloads/
 ### Erika
 
 * *Assets*
-* *Problèmes avec git dû à un changement de pc ([tests divers](test.txt))
+* *Problèmes avec git dû à un changement de pc ([tests divers](test.txt))*
 
 <ins>*Code :*</ins>
 
