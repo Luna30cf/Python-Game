@@ -15,35 +15,6 @@
       "items sur tapis",
       "arbres et décos",
       "kayou"  
-    ],
-    "teleporters_layer": "grotte entrée",
-    "teleporters": [
-      {
-        "zone": {
-          "x": 10,
-          "y": 15,
-          "width": 2,
-          "height": 2
-        },
-        "target_map": "grotte.tmx",
-        "target_spawn": {
-          "x": 5,
-          "y": 5
-        }
-      },
-      {
-        "zone": {
-          "x": 5,
-          "y": 5,
-          "width": 2,
-          "height": 2
-        },
-        "target_map": "mapv2.tmx",
-        "target_spawn": {
-          "x": 10,
-          "y": 15
-        }
-      }
     ]
     
   }

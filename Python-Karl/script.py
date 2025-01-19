@@ -7,7 +7,7 @@ import sys
 class Map:
     def __init__(self, tmx_file, collidable_json):
         """
-        Initialise la carte en chargeant le fichier TMX et les calques bloquants depuis un JSON.
+        Initialise la carte en chargeant le fichier TMX et les calques bloquants ainsi que les téléporteurs depuis un JSON.
         """
         self.tmx_data = pytmx.util_pygame.load_pygame(tmx_file)
         self.tile_width = self.tmx_data.tilewidth
@@ -245,7 +245,7 @@ class Game:
         """
         pygame.init()
         self.screen = pygame.display.set_mode((screen_width, screen_height))
-        pygame.display.set_caption("Map Tiled : POO + collisions + manette + noclip + zoom + anim + teleportation via touche")
+        pygame.display.set_caption("Map Tiled : POO + collisions + manette + noclip + zoom + anim + teleportation")
         self.clock = pygame.time.Clock()
 
         # Charger la carte initiale
@@ -285,13 +285,6 @@ class Game:
 
         # Affichage des téléporteurs (débogage)
         self.show_teleporters = False  # Par défaut, les téléporteurs ne sont pas affichés
-
-        # Stocker la carte d'origine pour le retour
-        self.original_map_file = self.current_map_file
-        self.teleport_spawn_points = {
-            "Assets/assets tiled/grotte.tmx": (5, 5),
-            "Assets/assets tiled/mapv2.tmx": (10, 15)
-        }
 
     def load_animations(self):
         """
@@ -345,27 +338,6 @@ class Game:
                         return float(tx), float(ty)
             print("[DEBUG] Aucune tuile libre trouvée dans la map ! Spawn en (0,0)")
             return 0.0, 0.0
-
-    def teleport_to_map(self, target_map, spawn_coords=None):
-        """
-        Téléporte le joueur vers une autre carte avec des coordonnées de spawn spécifiées.
-        """
-        if spawn_coords is None:
-            # Si aucune coordonnée de spawn n'est fournie, utiliser les points définis
-            spawn_coords = self.teleport_spawn_points.get(target_map, (0, 0))
-        
-        print(f"[DEBUG] Téléportation vers {target_map} à la position {spawn_coords}")
-        self.current_map_file = target_map
-        self.map = Map(self.current_map_file, "collidable_layers.json")
-        self.player.tile_width = self.map.tile_width
-        self.player.tile_height = self.map.tile_height
-        self.player.position_x, self.player.position_y = spawn_coords
-        self.player.move_start_x = self.player.position_x
-        self.player.move_start_y = self.player.position_y
-        self.player.move_target_x = self.player.position_x
-        self.player.move_target_y = self.player.position_y
-        self.player.is_moving = False
-        print(f"[DEBUG] Carte chargée : {target_map}, Position de spawn : {spawn_coords}")
 
     def handle_keyboard_input(self):
         """
@@ -450,12 +422,6 @@ class Game:
                 elif event.key == pygame.K_t:
                     self.show_teleporters = not self.show_teleporters
                     print(f"[DEBUG] Affichage des téléporteurs {'activé' if self.show_teleporters else 'désactivé'}")
-                elif event.key == pygame.K_g:
-                    # Téléporter vers la grotte
-                    self.teleport_to_map("Assets/assets tiled/grotte.tmx")
-                elif event.key == pygame.K_h:
-                    # Téléporter vers la carte principale
-                    self.teleport_to_map("Assets/assets tiled/mapv2.tmx")
 
             elif event.type == pygame.JOYBUTTONDOWN:
                 # Exemple : Toggle collision avec le bouton 0 (A sur manette Xbox)
@@ -466,10 +432,33 @@ class Game:
     def check_teleporters(self):
         """
         Vérifie si le joueur est dans une zone de téléportation et effectue le téléport si nécessaire.
-        (Cette méthode peut rester en place si vous souhaitez conserver la téléportation via zones)
         """
-        # Cette méthode reste inchangée si vous souhaitez garder la téléportation via zones
-        pass
+        player_tile_x = int(round(self.player.position_x))
+        player_tile_y = int(round(self.player.position_y))
+
+        for teleporter in self.map.teleporters:
+            zone = teleporter["zone"]
+            # Vérifie si la position du joueur est à l'intérieur de la zone de téléportation
+            if zone.collidepoint(player_tile_x, player_tile_y):
+                print(f"[DEBUG] Téléportation déclenchée vers {teleporter['target_map']} à {teleporter['target_spawn']}")
+                self.load_map(teleporter["target_map"], teleporter["target_spawn"])
+                break  # Téléportation unique par mise à jour
+
+    def load_map(self, map_file, spawn_coords):
+        """
+        Charge une nouvelle carte et positionne le joueur aux coordonnées de spawn spécifiées.
+        """
+        self.current_map_file = map_file
+        self.map = Map(self.current_map_file, "collidable_layers.json")
+        self.player.tile_width = self.map.tile_width
+        self.player.tile_height = self.map.tile_height
+        self.player.position_x, self.player.position_y = spawn_coords
+        self.player.move_start_x = self.player.position_x
+        self.player.move_start_y = self.player.position_y
+        self.player.move_target_x = self.player.position_x
+        self.player.move_target_y = self.player.position_y
+        self.player.is_moving = False
+        print(f"[DEBUG] Carte chargée : {map_file}, Spawn position : {spawn_coords}")
 
     def update(self, direction_x, direction_y):
         """
@@ -493,8 +482,7 @@ class Game:
                     print(f"[DEBUG] Hors map: ({target_x},{target_y})")
 
         self.player.update_position()
-        # Si vous souhaitez conserver la téléportation via zones, décommentez la ligne suivante
-        # self.check_teleporters()
+        self.check_teleporters()
 
     def render(self):
         """
@@ -541,7 +529,6 @@ class Game:
 
             self.update(direction_x, direction_y)
             self.render()
-
 
 if __name__ == "__main__":
     game = Game()

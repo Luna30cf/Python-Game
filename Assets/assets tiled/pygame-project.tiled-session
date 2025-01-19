@@ -155,8 +155,8 @@
             "scale": 0.33,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 1028.7878787878788,
-                "y": 1033.3333333333333
+                "x": 681.8181818181819,
+                "y": 936.3636363636364
             }
         },
         "jeux de tuiles/Cristaux-Principaux.tsx": {
@@ -192,6 +192,9 @@
             "scaleInDock": 2,
             "scaleInEditor": 2
         },
+        "jeux de tuiles/cave_B.tsx": {
+            "scaleInEditor": 1
+        },
         "jeux de tuiles/map.tmx": {
             "scale": 0.5,
             "selectedLayer": 0,
@@ -221,10 +224,10 @@
         },
         "mapv2.tmx": {
             "scale": 2,
-            "selectedLayer": 12,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 760.5,
-                "y": 744.5
+                "x": 965,
+                "y": 914
             }
         },
         "market_assets.tsx": {
@@ -267,6 +270,7 @@
     ],
     "project": "pygame-project.tiled-project",
     "recentFiles": [
+        "jeux de tuiles/cave_B.tsx",
         "mapv2.tmx",
         "jeux de tuiles/summer tilemap.tsx",
         "jeux de tuiles/TilesBases.tsx",
@@ -277,8 +281,7 @@
         "jeux de tuiles/TEST.tsx",
         "MAP.tmx",
         "jeux de tuiles/map.tmx",
-        "jeux de tuiles/barrières et bout de cailloux.tsx",
-        "jeux de tuiles/Fragments.tsx"
+        "jeux de tuiles/barrières et bout de cailloux.tsx"
     ],
     "tileset.lastUsedFilter": "Fichiers de jeu de tuiles Tiled (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
