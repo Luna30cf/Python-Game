@@ -4,7 +4,6 @@
   <img src="Assets/LOGO.png" />
 </p>
 
-test
 ## Sommaire
 
 - [I - Histoire](#i---histoire)
