@@ -28,23 +28,23 @@ def load_collidable_layers(tmx_data):
     on ajoute toutes ses tuiles (x,y) à l'ensemble 'collidables'.
     """
     collidable_layer_names = {
-        # "limites",
-        # "collines",
-        # "lac",
-        # "arbres3 et fleurs",
-        # "arbres2 et fleurs",
-        # "arbres et touffes d'herbes",
-        # "fleurs",
-        # "barrières",
-        # "étage",
-        # "maison",
+        "limites",
+        "collines",
+        "lac",
+        "arbres3 et fleurs",
+        "arbres2 et fleurs",
+        "arbres et touffes d'herbes",
+        "fleurs",
+        "barrières",
+        "étage",
+        "maison",
         "portes et bancs",
-        # "tonneaux1",
-        # "tonneaux2",
-        # "tonneaux3",
-        # "items sur tapis",
-        # "arbres et décos",
-        # "kayou",
+        "tonneaux1",
+        "tonneaux2",
+        "tonneaux3",
+        "items sur tapis",
+        "arbres et décos",
+        "kayou",
     }
     
     collidables = set()
@@ -53,7 +53,7 @@ def load_collidable_layers(tmx_data):
             if layer.name in collidable_layer_names:
                 for x, y, gid in layer:
                     if gid != 0:
-                        collidables.add((x, y))
+                        collidables.add((x, y-1))
     return collidables
 
 def find_valid_spawn(collidable_tiles, map_w, map_h, preferred_x=5, preferred_y=5):
