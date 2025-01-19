@@ -4,20 +4,15 @@ import pytmx
 # Initialisation de Pygame
 pygame.init()
 
-# Charger la carte TMX
+# Déterminer la taille de la fenêtre avant de charger la carte
 tmx_data = pytmx.load_pygame('Assets/assets tiled/mapv2.tmx')
 
-# Vérifier la taille de la carte avant d'essayer d'afficher
+# Calculer les dimensions de la fenêtre à partir de la carte TMX
 map_width = tmx_data.width * tmx_data.tilewidth
 map_height = tmx_data.height * tmx_data.tileheight
 
-# Si la taille de la carte est valide, initialiser l'écran
-if map_width > 0 and map_height > 0:
-    screen = pygame.display.set_mode((map_width, map_height))
-else:
-    print("Erreur: Dimensions de la carte non valides.")
-    pygame.quit()
-    exit()
+# Initialiser la fenêtre d'affichage avec les dimensions de la carte
+screen = pygame.display.set_mode((map_width, map_height))
 
 # Boucle principale du jeu
 running = True
