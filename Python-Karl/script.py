@@ -245,12 +245,12 @@ class Game:
         """
         pygame.init()
         self.screen = pygame.display.set_mode((screen_width, screen_height))
-        pygame.display.set_caption("Map Tiled : POO + collisions + manette + noclip + zoom + anim + teleportation")
+        pygame.display.set_caption("Les échos de Xerath")
         self.clock = pygame.time.Clock()
 
         # Charger la carte initiale
         self.current_map_file = "Assets/assets tiled/mapv2.tmx"
-        self.map = Map(self.current_map_file, "collidable_layers.json")
+        self.map = Map(self.current_map_file, "Python-Karl/collidable_layers.json")
 
         # Déterminer un spawn valide
         spawn_x, spawn_y = self.find_valid_spawn(5, 5)
@@ -449,7 +449,7 @@ class Game:
         Charge une nouvelle carte et positionne le joueur aux coordonnées de spawn spécifiées.
         """
         self.current_map_file = map_file
-        self.map = Map(self.current_map_file, "collidable_layers.json")
+        self.map = Map(self.current_map_file, "Python-Karl/collidable_layers.json")
         self.player.tile_width = self.map.tile_width
         self.player.tile_height = self.map.tile_height
         self.player.position_x, self.player.position_y = spawn_coords
