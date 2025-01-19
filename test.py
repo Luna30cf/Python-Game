@@ -9,7 +9,7 @@ pygame.init()
 tmx_data = pytmx.TiledMap('Assets/assets tiled/mapv2.tmx')
 
 # Facteur de zoom
-zoom_factor = 0  
+zoom_factor = 1 
 
 # Calculer la taille de la fenêtre avec le facteur de zoom
 map_width = int(tmx_data.width * tmx_data.tilewidth * zoom_factor)
