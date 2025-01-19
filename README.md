@@ -61,6 +61,7 @@ Ainsi, vous apprenez que la perfection que vous recherchiez n’était qu’une 
 <ins>*Code :*</ins>
 
 * *Tests avec pygame : fenêtre et interactions*
+* *Caméra suivant le personnage*
 
 
 ### Luna
@@ -76,6 +77,11 @@ Ainsi, vous apprenez que la perfection que vous recherchiez n’était qu’une 
 ### Erika
 
 * *Assets*
+* *Problèmes avec git dû à un changement de pc*
+
+<ins>*Code :*</ins>
+
+* *Sprite du personnage*
 
 
 
