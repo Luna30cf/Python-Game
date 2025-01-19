@@ -1,8 +1,12 @@
 import pygame
 import pytmx
+import time
 
 # Initialisation de Pygame
 pygame.init()
+
+# Petite pause pour s'assurer que Pygame est complètement initialisé
+time.sleep(1)
 
 # Déterminer la taille de la fenêtre avant de charger la carte
 tmx_data = pytmx.load_pygame('Assets/assets tiled/mapv2.tmx')
