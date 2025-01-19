@@ -1,14 +1,11 @@
 import pygame
 import pytmx
+import luna.Map as Map
+
 # Initialisation de Pygame
 pygame.init()
-# Définit la taille de la fenêtre
-screen = pygame.display.set_mode((1780, 1000))
-# Charge la carte TMX
-tmx_data = pytmx.load_pygame('Assets/assets tiled/mapv2.tmx')
 
-# Dimensionne l'image avec un facteur d'échelle par rapport à la fenêtre
-scale_factor = 4
+
 # Boucle principale du jeu
 running = True
 while running:

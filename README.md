@@ -39,11 +39,13 @@ Ainsi, vous apprenez que la perfection que vous recherchiez n’était qu’une 
 ## II - Fonctionnement
 
 <ins>Pour cloner le répository :</ins>
+
 ```
 https://github.com/Luna30cf/Python-Game.git
 ```
 
 <ins>Pour installer Pygame :</ins>
+
 ```
 pip install pygame
 
@@ -83,16 +85,19 @@ https://www.python.org/downloads/
 
 * *Tests avec pygame : fenêtre et intéractions*
 * *Caméra suivant le personnage*
+* *Sprite et mouvements du personnages*
 
 
 ### Luna
 
 * *Readme*
 * *Assets* 
+* *Définitions de calques de collisions sur Tiled*
 
 <ins>*Code :*</ins>
 
 * *Affichage d'une map avec PyGame*
+* *Gestion de l'échelle*
 
 
 ### Erika
