@@ -7,17 +7,12 @@
 ## Sommaire
 
 - [I - Histoire](#i---histoire)
-    - [Synopis](#introduction-et-contexte-)
-    - [Phase 1](#phase-1---exploration-du-village-)
-    - [Phase 2](#phase-2---premiers-indices-et-fragments-)
-    - [Phase 3](#phase-3---quête-des-fragments-)
-    - [Phase 4](#phase-4---révélation-au-temple-)
-    - [Phase 5](#phase-5---retour-dans-le-village-et-la-découverte-de-la-vérité-)
-    - [Révélation](#révélation-)
+    - [Synopis](#synopsis-)
     - [Morale](#morale-)
 - [II - Fonctionnement](#ii-fonctionnement)
-- [III - Répartition](#iii---répartition)
-- [IV - Crédits](#iv---crédits)
+- [III - Outils](#iii-outils)
+- [IV - Répartition](#iv---répartition)
+- [V - Crédits](#v---crédits)
 
 ## I - Histoire
 
@@ -41,15 +36,41 @@ Vous choisissez d’accepter votre nouvelle forme et de vivre parmi les villageo
 
 Ainsi, vous apprenez que la perfection que vous recherchiez n’était qu’une illusion et que l’acceptation de soi est la véritable clé de la paix intérieure.
 
-## II Fonctionnement
+## II - Fonctionnement
+
+<ins>Pour cloner le répository :</ins>
+```
+https://github.com/Luna30cf/Python-Game.git
+```
+
+<ins>Pour installer Pygame :</ins>
+```
+pip install pygame
+
+pip install pytmx
+```
+
+<ins>Pour vérifier si vous avez python:</ins>
+```
+python -V
+```
+
+⚠️ <ins>Si vous n'avez pas python :</ins>   
+https://www.python.org/downloads/
+
+
+
+## III - Outils
 
 ### Tiled
 
+*Tiled (signifiant tuilé en anglais) ou Tiled Map Editor est un logiciel libre de création de niveau de jeu vidéo par tuiles (d'où son nom) bitmap*   
+*Il gère les tuiles rectangulaires, hexagonales et en perspective isométrique, et permet d'ajouter des zones de collision qui ne seront pas affichées à l'écran. Il permet également de gérer plusieurs calques de tuiles et de placer les tuiles au pixel près, plutôt que de la dimension d'une tuile, et également de gérer les transitions de terrain automatiques et les changements automatiques en fonction de motifs*
+
 
 ### Pygame
-
-
-### Python
+*Pygame est une bibliothèque libre multiplate-forme qui facilite le développement de jeux vidéo temps réel avec le langage de programmation Python.*   
+*Construite sur la bibliothèque [SDL](https://fr.wikipedia.org/wiki/Simple_DirectMedia_Layer), elle permet de programmer la partie multimédia (graphismes, son et entrées au clavier, à la souris ou au joystick), sans se heurter aux difficultés des langages de bas niveaux comme le C et ses dérivés. Cela se fonde sur la supposition que la partie multimédia, souvent la plus contraignante à programmer dans un tel jeu, est suffisamment indépendante de la logique même du jeu pour qu'on puisse utiliser un langage de haut niveau (en l'occurrence le Python) pour la structure du jeu.*
 
 
 ## III - Répartition
@@ -60,7 +81,7 @@ Ainsi, vous apprenez que la perfection que vous recherchiez n’était qu’une 
 
 <ins>*Code :*</ins>
 
-* *Tests avec pygame : fenêtre et interactions*
+* *Tests avec pygame : fenêtre et intéractions*
 * *Caméra suivant le personnage*
 
 
@@ -77,7 +98,7 @@ Ainsi, vous apprenez que la perfection que vous recherchiez n’était qu’une 
 ### Erika
 
 * *Assets*
-* *Problèmes avec git dû à un changement de pc*
+* *Problèmes avec git dû à un changement de pc ([tests divers](test.txt))
 
 <ins>*Code :*</ins>
 

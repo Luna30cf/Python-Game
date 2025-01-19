@@ -9,21 +9,18 @@ class Joueur:
         # Charger la feuille de sprites
         self.sprite_sheet = pygame.image.load("Assets/joueur/walk and idle.png").convert_alpha()
 
-        # Vérifier les dimensions de la feuille de sprites
-        print(f"Sprite sheet dimensions: {self.sprite_sheet.get_width()}x{self.sprite_sheet.get_height()}")
-
         # Paramètres de la feuille de sprites
-        self.sprite_width = 32  # Taille de découpe 
-        self.sprite_height = 32  # Taille de découpe 
-        self.scaled_width = 8  # Taille redimensionnée
-        self.scaled_height =8# Taille redimensionnée
+        self.sprite_width = 32
+        self.sprite_height = 32
+        self.scaled_width = 32
+        self.scaled_height = 32
 
         # Découper les animations pour chaque direction
         self.animations = {
-            "down": self.load_animation(0),   # Ligne pour bas
-            "left": self.load_animation(1),   # Ligne pour gauche
-            "right": self.load_animation(1),  # Ligne pour droite (même que pour gauche)
-            "up": self.load_animation(0)     # Ligne pour haut (même que pour bas)
+            "down": self.load_animation(0),
+            "left": self.load_animation(1),
+            "right": self.load_animation(2),
+            "up": self.load_animation(3)
         }
 
         # Animation actuelle par défaut : bas
@@ -39,14 +36,11 @@ class Joueur:
     def load_animation(self, row):
         """Découpe et redimensionne les frames d'une ligne spécifique dans la feuille de sprites."""
         frames = []
-        frames_per_row = 24  # 24 frames par ligne (192 / 8 = 24)
-        for i in range(frames_per_row):
-            # Découpe la frame
+        for i in range(3):  # Nombre de frames par ligne
             frame = self.sprite_sheet.subsurface(
-                pygame.Rect(i * 8, row * 8, 8, 8)
+                pygame.Rect(i * self.sprite_width, row * self.sprite_height, self.sprite_width, self.sprite_height)
             )
-            # Redimensionner la frame à la taille souhaitée (par exemple, 32x32)
-            resized_frame = pygame.transform.scale(frame, (self.scaled_width, self.scaled_height))  # Nouvelle taille (32x32)
+            resized_frame = pygame.transform.scale(frame, (self.scaled_width, self.scaled_height))
             frames.append(resized_frame)
         return frames
 
@@ -83,7 +77,7 @@ class Joueur:
     def animate(self):
         """Gère le changement des frames de l'animation."""
         now = pygame.time.get_ticks()
-        if now - self.last_update > 100:  # Temps entre les frames (100ms ici)
+        if now - self.last_update > 100:  # Temps entre les frames
             self.last_update = now
             self.current_frame = (self.current_frame + 1) % len(self.current_animation)
             self.image = self.current_animation[self.current_frame]
