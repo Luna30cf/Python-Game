@@ -11,7 +11,7 @@ pygame.init()
 tmx_data = pytmx.TiledMap('Assets/assets tiled/mapv2.tmx')
 
 # Facteur de zoom
-zoom_factor = 1.5  # Ajuster selon le niveau de zoom souhaité
+zoom_factor = 2  # Ajuster selon le niveau de zoom souhaité
 
 # Calculer la taille de la fenêtre avec le facteur de zoom
 map_width = int(tmx_data.width * tmx_data.tilewidth * zoom_factor)
@@ -32,16 +32,27 @@ joueur = Joueur(map_width // 2, map_height // 2, 20)  # Position initiale au cen
 # Initialiser le gestionnaire d'interactions
 interaction_manager = InteractionManager(joueur)
 
+# Précharger et redimensionner toutes les tuiles une fois
+scaled_tiles = {}
+for gid in range(len(tmx_data.images)):
+    tile = tmx_data.get_tile_image_by_gid(gid)
+    if tile:  # Vérifie si la tuile existe
+        scaled_tiles[gid] = pygame.transform.scale(
+            tile,
+            (int(tmx_data.tilewidth * zoom_factor), int(tmx_data.tileheight * zoom_factor))
+        )
+
 # Ajouter des maisons à la liste d'interactions
 for obj in tmx_data.objects:
     if obj.type == "maison":
-        house_rect = pygame.Rect(obj.x, obj.y, obj.width, obj.height)
+        house_rect = pygame.Rect(obj.x * zoom_factor, obj.y * zoom_factor,
+                                 obj.width * zoom_factor, obj.height * zoom_factor)
         interaction_manager.add_house(house_rect)
 
 # Fonction pour charger une nouvelle carte
 def load_new_map(map_name):
     """Charger une nouvelle carte TMX."""
-    global tmx_data, interaction_manager
+    global tmx_data, interaction_manager, scaled_tiles
     # Recharger la carte TMX
     tmx_data = pytmx.load_pygame(map_name)
 
@@ -49,8 +60,19 @@ def load_new_map(map_name):
     interaction_manager.houses.clear()  # Vider les maisons actuelles
     for obj in tmx_data.objects:
         if obj.type == "maison":
-            house_rect = pygame.Rect(obj.x, obj.y, obj.width, obj.height)
+            house_rect = pygame.Rect(obj.x * zoom_factor, obj.y * zoom_factor,
+                                     obj.width * zoom_factor, obj.height * zoom_factor)
             interaction_manager.add_house(house_rect)
+
+    # Recharger et redimensionner les tuiles
+    scaled_tiles = {}
+    for gid in range(len(tmx_data.images)):
+        tile = tmx_data.get_tile_image_by_gid(gid)
+        if tile:
+            scaled_tiles[gid] = pygame.transform.scale(
+                tile,
+                (int(tmx_data.tilewidth * zoom_factor), int(tmx_data.tileheight * zoom_factor))
+            )
     print(f"Nouvelle carte chargée : {map_name}")
 
 # Boucle principale du jeu
@@ -80,7 +102,7 @@ while running:
     for layer in tmx_data.layers:
         if isinstance(layer, pytmx.TiledTileLayer):
             for x, y, gid in layer:
-                tile = tmx_data.get_tile_image_by_gid(gid)
+                tile = scaled_tiles.get(gid)
                 if tile:
                     screen.blit(
                         tile,
