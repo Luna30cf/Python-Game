@@ -7,24 +7,35 @@ from interaction import InteractionManager  # Importer le gestionnaire d'interac
 # Initialisation de Pygame
 pygame.init()
 
+# Définit la taille de la fenêtre
+screen = pygame.display.set_mode((1780, 1000))
+
 # Chargement de la carte TMX
 tmx_data = pytmx.TiledMap('Assets/assets tiled/mapv2.tmx')
 
-# Facteur de zoom
-zoom_factor = 1.5  # Ajuster selon le niveau de zoom souhaité
+# Dimensionne l'image avec un facteur d'échelle par rapport à la fenêtre
+scale_factor = 4
 
-# Calculer la taille de la fenêtre avec le facteur de zoom
-map_width = int(tmx_data.width * tmx_data.tilewidth * zoom_factor)
-map_height = int(tmx_data.height * tmx_data.tileheight * zoom_factor)
-
-# Initialiser la fenêtre d'affichage avec les nouvelles dimensions
-screen = pygame.display.set_mode((map_width, map_height))
-
-# Ajouter un petit délai pour garantir l'initialisation complète
-time.sleep(1)
-
-# Recharger la carte TMX après l'initialisation de la fenêtre
-tmx_data = pytmx.load_pygame('Assets/assets tiled/mapv2.tmx')
+# Boucle principale du jeu
+running = True
+while running:
+    # Gestion des événements
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+    # Effacer l'écran
+    screen.fill((0, 0, 0))
+    # Afficher les tuiles de la carte avec redimensionnement
+    for layer in tmx_data.layers:
+        if isinstance(layer, pytmx.TiledTileLayer):
+            for x, y, gid in layer:
+                tile = tmx_data.get_tile_image_by_gid(gid)
+                if tile:
+                    # Redimensionner la tuile selon le facteur d'échelle
+                    tile = pygame.transform.scale(tile, (tmx_data.tilewidth * scale_factor, tmx_data.tileheight * scale_factor))
+                    
+                    # Dessiner la tuile redimensionnée à l'écran
+                    screen.blit(tile, (x * tmx_data.tilewidth * scale_factor, y * tmx_data.tileheight * scale_factor))
 
 # Créer le personnage (joueur)
 joueur = Joueur(map_width // 2, map_height // 2, 20)  # Position initiale au centre de la carte

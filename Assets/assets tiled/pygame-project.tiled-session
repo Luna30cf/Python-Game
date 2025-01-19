@@ -172,7 +172,8 @@
             "scaleInEditor": 0.75
         },
         "jeux de tuiles/TilesBases.tsx": {
-            "scaleInDock": 3
+            "scaleInDock": 3,
+            "scaleInEditor": 1
         },
         "jeux de tuiles/arbres et rochers.tsx": {
             "dynamicWrapping": false,
@@ -205,7 +206,7 @@
         },
         "jeux de tuiles/summer and spring items.tsx": {
             "scaleInDock": 2,
-            "scaleInEditor": 1
+            "scaleInEditor": 1.5
         },
         "jeux de tuiles/summer tilemap.tsx": {
             "scaleInDock": 1,
@@ -265,18 +266,18 @@
     ],
     "project": "pygame-project.tiled-project",
     "recentFiles": [
-        "jeux de tuiles/cave.tsx",
-        "jeux de tuiles/summer and spring items.tsx",
-        "jeux de tuiles/spring tilemap.tsx",
+        "jeux de tuiles/TilesBases.tsx",
         "jeux de tuiles/summer tilemap.tsx",
+        "jeux de tuiles/spring tilemap.tsx",
+        "jeux de tuiles/summer and spring items.tsx",
+        "jeux de tuiles/cave.tsx",
         "mapv2.tmx",
         "grotte.tmx",
         "jeux de tuiles/TEST.tsx",
         "MAP.tmx",
         "jeux de tuiles/map.tmx",
         "jeux de tuiles/barrières et bout de cailloux.tsx",
-        "jeux de tuiles/Fragments.tsx",
-        "jeux de tuiles/Cristaux-Principaux.tsx"
+        "jeux de tuiles/Fragments.tsx"
     ],
     "tileset.lastUsedFilter": "Fichiers de jeu de tuiles Tiled (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
