@@ -4,7 +4,6 @@ import time
 import json
 import sys
 
-
 class Map:
     def __init__(self, tmx_file, collidable_json):
         """
@@ -15,17 +14,23 @@ class Map:
         self.tile_height = self.tmx_data.tileheight
         self.map_width = self.tmx_data.width
         self.map_height = self.tmx_data.height
-        self.collidable_tiles = self.load_collidable_layers(collidable_json)
+        self.collidable_tiles, self.teleporters_layer = self.load_layers(collidable_json)
         self.scaled_tiles_cache = {}
+        self.teleporters = self.load_teleporters(collidable_json)
         print(f"[DEBUG] Nombre total de tuiles bloquantes = {len(self.collidable_tiles)}")
+        print(f"[DEBUG] Nombre total de téléporteurs = {len(self.teleporters)}")
 
-    def load_collidable_layers(self, json_layers_file):
+    def load_layers(self, json_layers_file):
         """
-        Charge les calques bloquants depuis un fichier JSON et récupère toutes les tuiles bloquantes.
+        Charge les calques bloquants et identifie le calque des téléporteurs.
+        Retourne un tuple (collidable_tiles, teleporters_layer_name).
         """
         with open(json_layers_file, "r", encoding="utf-8") as f:
             data = json.load(f)
+
         collidable_layer_names = set(data.get("layers", []))
+        teleporters_layer_name = data.get("teleporters_layer", "teleporters")
+
         collidable_tiles = set()
 
         for layer in self.tmx_data.visible_layers:
@@ -39,7 +44,41 @@ class Map:
                     print(f"[DEBUG] Layer '{layer.name}' => {count_added} tuiles ajoutées comme bloquantes.")
                 else:
                     print(f"[DEBUG] Layer '{layer.name}' ignoré pour collisions.")
-        return collidable_tiles
+
+        return collidable_tiles, teleporters_layer_name
+
+    def load_teleporters(self, json_layers_file):
+        """
+        Charge les téléporteurs depuis un fichier JSON.
+        Retourne une liste de téléporteurs avec leurs zones et destinations.
+        """
+        with open(json_layers_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        teleporters_data = data.get("teleporters", [])
+
+        teleporters = []
+        for teleporter in teleporters_data:
+            zone = teleporter.get("zone", {})
+            target_map = teleporter.get("target_map")
+            target_spawn = teleporter.get("target_spawn", {})
+            if zone and target_map and target_spawn:
+                teleporter_rect = pygame.Rect(
+                    zone.get("x", 0),
+                    zone.get("y", 0),
+                    zone.get("width", 1),
+                    zone.get("height", 1)
+                )
+                teleporters.append({
+                    "zone": teleporter_rect,
+                    "target_map": target_map,
+                    "target_spawn": (target_spawn.get("x", 0), target_spawn.get("y", 0))
+                })
+                print(f"[DEBUG] Téléporteur ajouté: Zone={zone}, Target Map={target_map}, Target Spawn={target_spawn}")
+            else:
+                print(f"[WARNING] Téléporteur mal configuré dans le JSON: {teleporter}")
+
+        return teleporters
 
     def get_scaled_tile_image(self, gid, zoom):
         """
@@ -59,10 +98,11 @@ class Map:
         self.scaled_tiles_cache[(gid, zoom)] = scaled_image
         return scaled_image
 
-    def render(self, screen, camera_x, camera_y, zoom, debug=False):
+    def render(self, screen, camera_x, camera_y, zoom, debug=False, show_teleporters=False):
         """
         Rend toutes les tuiles visibles à l'écran en fonction de la position de la caméra et du zoom.
         Si debug=True, dessine des rectangles rouges sur les tuiles bloquantes.
+        Si show_teleporters=True, dessine des rectangles bleus sur les zones de téléportation.
         """
         for layer in self.tmx_data.visible_layers:
             if isinstance(layer, pytmx.TiledTileLayer):
@@ -83,6 +123,16 @@ class Map:
                 )
                 pygame.draw.rect(screen, (255, 0, 0), rect, 2)  # Dessine un contour rouge
 
+        if show_teleporters:
+            for teleporter in self.teleporters:
+                zone = teleporter["zone"]
+                rect = pygame.Rect(
+                    zone.x * self.tile_width * zoom - camera_x,
+                    zone.y * self.tile_height * zoom - camera_y,
+                    zone.width * self.tile_width * zoom,
+                    zone.height * self.tile_height * zoom
+                )
+                pygame.draw.rect(screen, (0, 0, 255), rect, 2)  # Dessine un contour bleu
 
 class Player:
     def __init__(self, animations, spawn_x, spawn_y, tile_width, tile_height, zoom, sprite_scale):
@@ -195,11 +245,12 @@ class Game:
         """
         pygame.init()
         self.screen = pygame.display.set_mode((screen_width, screen_height))
-        pygame.display.set_caption("Map Tiled : POO + collisions + manette + noclip + zoom + anim")
+        pygame.display.set_caption("Map Tiled : POO + collisions + manette + noclip + zoom + anim + teleportation via touche")
         self.clock = pygame.time.Clock()
 
-        # Charger la carte
-        self.map = Map("Assets/assets tiled/mapv2.tmx", "Python-Karl/collidable_layers.json")
+        # Charger la carte initiale
+        self.current_map_file = "Assets/assets tiled/mapv2.tmx"
+        self.map = Map(self.current_map_file, "collidable_layers.json")
 
         # Déterminer un spawn valide
         spawn_x, spawn_y = self.find_valid_spawn(5, 5)
@@ -231,6 +282,16 @@ class Game:
 
         # Pour répéter les KEYDOWN si on maintient la flèche
         pygame.key.set_repeat(200, 80)
+
+        # Affichage des téléporteurs (débogage)
+        self.show_teleporters = False  # Par défaut, les téléporteurs ne sont pas affichés
+
+        # Stocker la carte d'origine pour le retour
+        self.original_map_file = self.current_map_file
+        self.teleport_spawn_points = {
+            "Assets/assets tiled/grotte.tmx": (5, 5),
+            "Assets/assets tiled/mapv2.tmx": (10, 15)
+        }
 
     def load_animations(self):
         """
@@ -284,6 +345,27 @@ class Game:
                         return float(tx), float(ty)
             print("[DEBUG] Aucune tuile libre trouvée dans la map ! Spawn en (0,0)")
             return 0.0, 0.0
+
+    def teleport_to_map(self, target_map, spawn_coords=None):
+        """
+        Téléporte le joueur vers une autre carte avec des coordonnées de spawn spécifiées.
+        """
+        if spawn_coords is None:
+            # Si aucune coordonnée de spawn n'est fournie, utiliser les points définis
+            spawn_coords = self.teleport_spawn_points.get(target_map, (0, 0))
+        
+        print(f"[DEBUG] Téléportation vers {target_map} à la position {spawn_coords}")
+        self.current_map_file = target_map
+        self.map = Map(self.current_map_file, "collidable_layers.json")
+        self.player.tile_width = self.map.tile_width
+        self.player.tile_height = self.map.tile_height
+        self.player.position_x, self.player.position_y = spawn_coords
+        self.player.move_start_x = self.player.position_x
+        self.player.move_start_y = self.player.position_y
+        self.player.move_target_x = self.player.position_x
+        self.player.move_target_y = self.player.position_y
+        self.player.is_moving = False
+        print(f"[DEBUG] Carte chargée : {target_map}, Position de spawn : {spawn_coords}")
 
     def handle_keyboard_input(self):
         """
@@ -365,12 +447,29 @@ class Game:
                 elif event.key == pygame.K_c:
                     self.collision_enabled = not self.collision_enabled
                     print(f"[DEBUG] Collisions {'activées' if self.collision_enabled else 'désactivées'}")
+                elif event.key == pygame.K_t:
+                    self.show_teleporters = not self.show_teleporters
+                    print(f"[DEBUG] Affichage des téléporteurs {'activé' if self.show_teleporters else 'désactivé'}")
+                elif event.key == pygame.K_g:
+                    # Téléporter vers la grotte
+                    self.teleport_to_map("Assets/assets tiled/grotte.tmx")
+                elif event.key == pygame.K_h:
+                    # Téléporter vers la carte principale
+                    self.teleport_to_map("Assets/assets tiled/mapv2.tmx")
 
             elif event.type == pygame.JOYBUTTONDOWN:
                 # Exemple : Toggle collision avec le bouton 0 (A sur manette Xbox)
                 if event.button == 0:
                     self.collision_enabled = not self.collision_enabled
                     print(f"[DEBUG] Collisions {'activées' if self.collision_enabled else 'désactivées'} via manette")
+
+    def check_teleporters(self):
+        """
+        Vérifie si le joueur est dans une zone de téléportation et effectue le téléport si nécessaire.
+        (Cette méthode peut rester en place si vous souhaitez conserver la téléportation via zones)
+        """
+        # Cette méthode reste inchangée si vous souhaitez garder la téléportation via zones
+        pass
 
     def update(self, direction_x, direction_y):
         """
@@ -394,6 +493,8 @@ class Game:
                     print(f"[DEBUG] Hors map: ({target_x},{target_y})")
 
         self.player.update_position()
+        # Si vous souhaitez conserver la téléportation via zones, décommentez la ligne suivante
+        # self.check_teleporters()
 
     def render(self):
         """
@@ -407,8 +508,15 @@ class Game:
         camera_x = player_px - self.screen.get_width() / 2
         camera_y = player_py - self.screen.get_height() / 2
 
-        # Rendre la carte
-        self.map.render(self.screen, camera_x, camera_y, self.zoom, debug=False)  # Changez en True pour le débogage
+        # Rendre la carte avec les options de débogage
+        self.map.render(
+            self.screen,
+            camera_x,
+            camera_y,
+            self.zoom,
+            debug=False,  # Changez en True pour afficher les tuiles bloquantes
+            show_teleporters=self.show_teleporters
+        )
 
         # Rendre le joueur
         self.player.render(self.screen, camera_x, camera_y)
