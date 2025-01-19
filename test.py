@@ -5,18 +5,19 @@ import time
 # Initialisation de Pygame
 pygame.init()
 
-# Petite pause pour s'assurer que Pygame est complètement initialisé
-time.sleep(1)
-
-# Déterminer la taille de la fenêtre avant de charger la carte
-tmx_data = pytmx.load_pygame('Assets/assets tiled/mapv2.tmx')
-
-# Calculer les dimensions de la fenêtre à partir de la carte TMX
+# Calculer la taille de la fenêtre avant de charger la carte
+tmx_data = pytmx.TiledMap('Assets/assets tiled/mapv2.tmx')
 map_width = tmx_data.width * tmx_data.tilewidth
 map_height = tmx_data.height * tmx_data.tileheight
 
 # Initialiser la fenêtre d'affichage avec les dimensions de la carte
 screen = pygame.display.set_mode((map_width, map_height))
+
+# Ajouter un petit délai pour garantir l'initialisation complète
+time.sleep(1)
+
+# Charger la carte TMX après l'initialisation de la fenêtre
+tmx_data = pytmx.load_pygame('Assets/assets tiled/mapv2.tmx')
 
 # Boucle principale du jeu
 running = True
