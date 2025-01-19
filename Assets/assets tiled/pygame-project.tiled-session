@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "jeux de tuiles/map.tmx",
+    "activeFile": "mapv2.tmx",
     "expandedProjectPaths": [
+        ".",
         "jeux de tuiles",
-        "Tiny Wonder Forest 1.0",
-        "."
+        "Tiny Wonder Forest 1.0"
     ],
     "file.lastUsedOpenFilter": "Tous les Fichiers (*)",
     "fileStates": {
@@ -168,8 +168,11 @@
             "scaleInEditor": 1
         },
         "jeux de tuiles/TEST.tsx": {
-            "scaleInDock": 2,
+            "scaleInDock": 0.75,
             "scaleInEditor": 0.75
+        },
+        "jeux de tuiles/TilesBases.tsx": {
+            "scaleInDock": 3
         },
         "jeux de tuiles/arbres et rochers.tsx": {
             "dynamicWrapping": false,
@@ -185,6 +188,7 @@
             "scaleInEditor": 1
         },
         "jeux de tuiles/cave.tsx": {
+            "scaleInDock": 1,
             "scaleInEditor": 2
         },
         "jeux de tuiles/map.tmx": {
@@ -195,9 +199,29 @@
                 "y": 758
             }
         },
+        "jeux de tuiles/spring tilemap.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "jeux de tuiles/summer and spring items.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "jeux de tuiles/summer tilemap.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "mainlev_build.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "mapv2.tmx": {
+            "scale": 0.125,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 72,
+                "y": -448
+            }
         },
         "market_assets.tsx": {
             "scaleInDock": 1
@@ -234,25 +258,25 @@
     "map.tileWidth": 16,
     "map.width": 96,
     "openFiles": [
-        "jeux de tuiles/map.tmx",
-        "jeux de tuiles/TEST.tsx",
-        "grotte.tmx",
-        "MAP.tmx"
+        "mapv2.tmx",
+        "jeux de tuiles/summer tilemap.tsx",
+        "jeux de tuiles/spring tilemap.tsx",
+        "jeux de tuiles/summer and spring items.tsx"
     ],
     "project": "pygame-project.tiled-project",
     "recentFiles": [
-        "grotte.tmx",
         "jeux de tuiles/cave.tsx",
+        "jeux de tuiles/summer and spring items.tsx",
+        "jeux de tuiles/spring tilemap.tsx",
+        "jeux de tuiles/summer tilemap.tsx",
+        "mapv2.tmx",
+        "grotte.tmx",
         "jeux de tuiles/TEST.tsx",
         "MAP.tmx",
         "jeux de tuiles/map.tmx",
         "jeux de tuiles/barrières et bout de cailloux.tsx",
         "jeux de tuiles/Fragments.tsx",
-        "jeux de tuiles/Cristaux-Principaux.tsx",
-        "jeux de tuiles/background.tsx",
-        "jeux de tuiles/arbres et rochers.tsx",
-        "C:/Users/7luna/Documents/YnovB2/python/Python-Game/MAP.tmx",
-        "Fragments.tsx"
+        "jeux de tuiles/Cristaux-Principaux.tsx"
     ],
     "tileset.lastUsedFilter": "Fichiers de jeu de tuiles Tiled (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",

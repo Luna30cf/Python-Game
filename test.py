@@ -8,11 +8,10 @@ pygame.init()
 screen = pygame.display.set_mode((1780, 1000))
 
 # Charge la carte TMX
-tmx_data = pytmx.load_pygame('Assets/assets tiled/grotte.tmx')
-# tmx_data = pytmx.load_pygame('MAP.tmx') # pas de jeux de tuiles donc pas encore fonctionnelle
+tmx_data = pytmx.load_pygame('Assets/assets tiled/mapv2.tmx')
 
 # Dimensionne l'image avec un facteur d'échelle par rapport à la fenêtre
-scale_factor = 0.
+scale_factor = 4
 
 # Boucle principale du jeu
 running = True
