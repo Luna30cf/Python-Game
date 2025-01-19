@@ -5,18 +5,23 @@ import time
 # Initialisation de Pygame
 pygame.init()
 
-# Calculer la taille de la fenêtre avant de charger la carte
+# Chargement de la carte TMX
 tmx_data = pytmx.TiledMap('Assets/assets tiled/mapv2.tmx')
-map_width = tmx_data.width * tmx_data.tilewidth
-map_height = tmx_data.height * tmx_data.tileheight
 
-# Initialiser la fenêtre d'affichage avec les dimensions de la carte
+# Facteur de zoom
+zoom_factor = 1.5  # Augmente cette valeur pour réduire le dézoom
+
+# Calculer la taille de la fenêtre avec le facteur de zoom
+map_width = int(tmx_data.width * tmx_data.tilewidth * zoom_factor)
+map_height = int(tmx_data.height * tmx_data.tileheight * zoom_factor)
+
+# Initialiser la fenêtre d'affichage avec les nouvelles dimensions
 screen = pygame.display.set_mode((map_width, map_height))
 
 # Ajouter un petit délai pour garantir l'initialisation complète
 time.sleep(1)
 
-# Charger la carte TMX après l'initialisation de la fenêtre
+# Recharger la carte TMX après l'initialisation de la fenêtre
 tmx_data = pytmx.load_pygame('Assets/assets tiled/mapv2.tmx')
 
 # Boucle principale du jeu
@@ -35,9 +40,14 @@ while running:
             for x, y, gid in layer:
                 tile = tmx_data.get_tile_image_by_gid(gid)
                 if tile:
+                    # Appliquer le facteur de zoom en multipliant les coordonnées
+                    scaled_tile = pygame.transform.scale(tile, 
+                        (int(tmx_data.tilewidth * zoom_factor), 
+                         int(tmx_data.tileheight * zoom_factor)))
                     screen.blit(
-                        tile,
-                        (x * tmx_data.tilewidth, y * tmx_data.tileheight)
+                        scaled_tile,
+                        (int(x * tmx_data.tilewidth * zoom_factor), 
+                         int(y * tmx_data.tileheight * zoom_factor))
                     )
 
     # Actualiser l'écran
