@@ -172,7 +172,7 @@
             "scaleInEditor": 0.75
         },
         "jeux de tuiles/TilesBases.tsx": {
-            "scaleInDock": 1.5,
+            "scaleInDock": 2,
             "scaleInEditor": 1
         },
         "jeux de tuiles/arbres et rochers.tsx": {
@@ -220,11 +220,11 @@
             "scaleInEditor": 1
         },
         "mapv2.tmx": {
-            "scale": 0.5,
-            "selectedLayer": 0,
+            "scale": 2,
+            "selectedLayer": 12,
             "viewCenter": {
-                "x": 690,
-                "y": 658
+                "x": 760.5,
+                "y": 744.5
             }
         },
         "market_assets.tsx": {
@@ -267,8 +267,8 @@
     ],
     "project": "pygame-project.tiled-project",
     "recentFiles": [
-        "jeux de tuiles/summer tilemap.tsx",
         "mapv2.tmx",
+        "jeux de tuiles/summer tilemap.tsx",
         "jeux de tuiles/TilesBases.tsx",
         "jeux de tuiles/spring tilemap.tsx",
         "jeux de tuiles/summer and spring items.tsx",
