@@ -111,6 +111,8 @@ https://www.python.org/downloads/
 * *déplacements joueur avec les flèches du clavier*
 * *camera*
 * *définition intéractions et menu d'informations (touche i pour y acceder)*
+* *fonction random crytals*
+
 
 
 
