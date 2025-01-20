@@ -40,27 +40,44 @@ Ainsi, vous apprenez que la perfection que vous recherchiez n’était qu’une 
 
 <ins>Pour cloner le répository :</ins>
 
+```bash
+git clone https://github.com/Luna30cf/Python-Game.git
 ```
-https://github.com/Luna30cf/Python-Game.git
+
+
+<ins>Pour vérifier si vous avez python:</ins>
+```bash
+python -V
 ```
+
+
+⚠️ <ins>Si vous n'avez pas python :</ins>   
+
+https://www.python.org/downloads/
+
 
 <ins>Pour installer Pygame :</ins>
 
-```
+```bash
 pip install pygame
 
 pip install pytmx
 ```
 
-<ins>Pour vérifier si vous avez python:</ins>
+
+<ins>Pour lancer le projet :</ins>
+
+- Avant le 19 janvier à 23h59  
+```bash
+Python-Game> python .\Python-Karl\script.py
 ```
-python -V
+
+OU
+
+- Le 20 janvier   
+```bash
+Python-Game> python main.py
 ```
-
-⚠️ <ins>Si vous n'avez pas python :</ins>   
-https://www.python.org/downloads/
-
-
 
 ## III - Outils
 
@@ -98,22 +115,26 @@ https://www.python.org/downloads/
 
 * *Affichage d'une map avec PyGame*
 * *Gestion de l'échelle*
-
+* *essayer le changement de map*
 
 ### Erika
 
 * *Assets*
-* *Problèmes avec git dû à un changement de pc ([tests divers](test.txt))
+* *Problèmes avec git dû à un changement de pc ([tests divers](test.txt))*
 
 <ins>*Code :*</ins>
 
 * *Sprite du personnage et "villageois chat"*
 * *déplacements joueur avec les flèches du clavier*
 * *camera*
+<<<<<<< HEAD
 * *définition intéractions et menu d'informations (touche i pour y acceder)*
 * *fonction random crytals*
 
 
+=======
+* *définition interactions: joueur - villageois (touche P pour Parler), joueur - lieu (touche E pour entrer), joueur - objets (touche R pour ramasser)*
+>>>>>>> 93dd5c4d697e2e6dee448577059e1dcc3f74bbb0
 
 
 
