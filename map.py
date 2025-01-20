@@ -6,22 +6,19 @@ import teleport as t
 class Map:
     def __init__(self, tmx_file, collidable_json):
         """
-        Initialise la carte en chargeant le fichier TMX et les calques bloquants.
+        Initialise la carte en chargeant le fichier TMX et les calques bloquants ainsi que les téléporteurs depuis un JSON.
         """
         self.tmx_data = pytmx.util_pygame.load_pygame(tmx_file)
         self.tile_width = self.tmx_data.tilewidth
         self.tile_height = self.tmx_data.tileheight
         self.map_width = self.tmx_data.width
         self.map_height = self.tmx_data.height
-        self.collidable_tiles = self.load_collidable_tiles(collidable_json)
-        self.teleporter = t.Teleporter()
+        self.collidable_tiles, self.teleporters_layer = self.load_layers(collidable_json)
+        self.scaled_tiles_cache = {}
+        self.teleporters = self.load_teleporters(collidable_json)
         print(f"[DEBUG] Nombre total de tuiles bloquantes = {len(self.collidable_tiles)}")
 
     def load_layers(self, json_layers_file):
-        """
-        Charge les calques bloquants et identifie le calque des téléporteurs.
-        Retourne un tuple (collidable_tiles, teleporters_layer_name).
-        """
         with open(json_layers_file, "r", encoding="utf-8") as f:
             data = json.load(f)
 
@@ -29,6 +26,7 @@ class Map:
         teleporters_layer_name = data.get("teleporters_layer", "teleporters")
 
         collidable_tiles = set()
+        total_count = 0  # Initialisation du comptage total des tuiles bloquantes
 
         for layer in self.tmx_data.visible_layers:
             if isinstance(layer, pytmx.TiledTileLayer):
@@ -36,13 +34,16 @@ class Map:
                     count_added = 0
                     for x, y, gid in layer:
                         if gid != 0:
-                            collidable_tiles.add((x, y - 1))  # Ajustez selon vos besoins
+                            collidable_tiles.add((x, y))  # Ajout sans -1
                             count_added += 1
+                            total_count += 1
                     print(f"[DEBUG] Layer '{layer.name}' => {count_added} tuiles ajoutées comme bloquantes.")
                 else:
                     print(f"[DEBUG] Layer '{layer.name}' ignoré pour collisions.")
 
+        print(f"[DEBUG] Nombre total de tuiles bloquantes = {total_count}")
         return collidable_tiles, teleporters_layer_name
+
 
     def load_teleporters(self, json_layers_file):
         """
@@ -94,7 +95,8 @@ class Map:
         )
         self.scaled_tiles_cache[(gid, zoom)] = scaled_image
         return scaled_image
-
+    
+    
     def render(self, screen, camera_x, camera_y, zoom, debug=False, show_teleporters=False):
         """
         Rend toutes les tuiles visibles à l'écran en fonction de la position de la caméra et du zoom.

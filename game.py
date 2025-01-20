@@ -2,6 +2,8 @@ import pygame
 import sys
 import map as m
 import player as p
+import teleport as t
+import json
 
 class Game:
     def __init__(self, screen_width=1280, screen_height=720):
@@ -15,10 +17,14 @@ class Game:
 
         # Charger la carte initiale
         self.current_map_file = "Assets/assets tiled/mapv2.tmx"
-        self.map = m.Map(self.current_map_file, "Python-Karl/collidable_layers.json")
+        self.map = m.Map(self.current_map_file, "collidable_layers.json")
+
+        # Charger les zones de téléportation
+        self.teleporter = t.Teleporter("teleport-zones.json")
+
 
         # Déterminer un spawn valide
-        spawn_x, spawn_y = self.find_valid_spawn(22, 56)
+        spawn_x, spawn_y = self.find_valid_spawn(22, 58)
         print(f"[DEBUG] Spawn validé : ({spawn_x},{spawn_y})")
 
         # Charger les animations du joueur
@@ -155,7 +161,7 @@ class Game:
                 self.player.direction = "down"
 
         return direction_x, direction_y
-
+    
     def handle_events(self):
         """
         Gère tous les événements Pygame, y compris les entrées clavier et manette.
@@ -194,22 +200,24 @@ class Game:
                     self.collision_enabled = not self.collision_enabled
                     print(f"[DEBUG] Collisions {'activées' if self.collision_enabled else 'désactivées'} via manette")
 
+
     def check_teleporters(self):
         """
-        Vérifie si le joueur doit être téléporté et effectue la téléportation.
+        Vérifie si le joueur doit être téléporté.
         """
-        new_map, new_position = self.map.teleporter.check_teleportation(self.player)
+        new_map, new_position = self.teleporter.check_teleportation(self.player)
         if new_map:
             self.map = new_map
             self.player.position_x, self.player.position_y = new_position
-            print(f"[INFO] Joueur téléporté à la nouvelle carte avec position {new_position}")
+            print(f"[INFO] Joueur téléporté à la carte {self.map} avec position {new_position}")
+            
 
     def load_map(self, map_file, spawn_coords):
         """
         Charge une nouvelle carte et positionne le joueur aux coordonnées de spawn spécifiées.
         """
         self.current_map_file = map_file
-        self.map = m.Map(self.current_map_file, "Python-Karl/collidable_layers.json")
+        self.map = m.Map(self.current_map_file, "collidable_layers.json")
         self.player.tile_width = self.map.tile_width
         self.player.tile_height = self.map.tile_height
         self.player.position_x, self.player.position_y = spawn_coords
@@ -244,6 +252,7 @@ class Game:
         self.player.update_position()
         self.check_teleporters()
 
+
     def render(self):
         """
         Rend tous les éléments du jeu à l'écran.
@@ -261,9 +270,7 @@ class Game:
             self.screen,
             camera_x,
             camera_y,
-            self.zoom,
-            debug=False,  # Changez en True pour afficher les tuiles bloquantes
-            show_teleporters=self.show_teleporters
+            self.zoom
         )
 
         # Rendre le joueur
