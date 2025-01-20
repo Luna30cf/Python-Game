@@ -21,5 +21,5 @@ class CrystalManager:
         """Dessine les cristaux sur l'écran."""
         for crystal in self.crystals:
             # Remplacez cette ligne pour dessiner une image à la place du carré rouge :
-            # screen.blit(crystal_image, crystal.topleft)
+            # screen.blit(<crystal_image> crystal.topleft)
             pygame.draw.rect(screen, (255, 0, 0), crystal)

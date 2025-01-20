@@ -86,7 +86,7 @@ https://www.python.org/downloads/
 * *Tests avec pygame : fenêtre et intéractions*
 * *Caméra suivant le personnage*
 * *Sprite et mouvements du personnages*
-* *Déplacement avec manette*
+
 
 ### Luna
 
@@ -110,7 +110,10 @@ https://www.python.org/downloads/
 * *Sprite du personnage et "villageois chat"*
 * *déplacements joueur avec les flèches du clavier*
 * *camera*
-* *définition interactions joueur - villageois (touche P pour Parler), joueur - lieu (touche E pour entrer), joueur - objets (touche R pour ramasser)
+* *définition intéractions et menu d'informations (touche i pour y acceder)*
+* *fonction random crytals*
+
+
 
 
 
