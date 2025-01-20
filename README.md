@@ -40,27 +40,42 @@ Ainsi, vous apprenez que la perfection que vous recherchiez n’était qu’une 
 
 <ins>Pour cloner le répository :</ins>
 
+```bash
+git clone https://github.com/Luna30cf/Python-Game.git
 ```
-https://github.com/Luna30cf/Python-Game.git
+
+
+<ins>Pour vérifier si vous avez python:</ins>
+```bash
+python -V
 ```
+
+
+⚠️ <ins>Si vous n'avez pas python :</ins>   
+
+https://www.python.org/downloads/
+
 
 <ins>Pour installer Pygame :</ins>
 
-```
+```bash
 pip install pygame
 
 pip install pytmx
 ```
 
-<ins>Pour vérifier si vous avez python:</ins>
+
+<ins>Pour lancer le projet :</ins>
+
+```bash
+Python-Game> python .\Python-Karl\script.py
 ```
-python -V
+
+OU
+
+```bash
+Python-Game> python main.py
 ```
-
-⚠️ <ins>Si vous n'avez pas python :</ins>   
-https://www.python.org/downloads/
-
-
 
 ## III - Outils
 
@@ -98,7 +113,7 @@ https://www.python.org/downloads/
 
 * *Affichage d'une map avec PyGame*
 * *Gestion de l'échelle*
-
+* *essayer le changement de map*
 
 ### Erika
 

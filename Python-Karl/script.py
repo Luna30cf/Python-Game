@@ -253,7 +253,7 @@ class Game:
         self.map = Map(self.current_map_file, "Python-Karl/collidable_layers.json")
 
         # Déterminer un spawn valide
-        spawn_x, spawn_y = self.find_valid_spawn(5, 5)
+        spawn_x, spawn_y = self.find_valid_spawn(22, 57)
         print(f"[DEBUG] Spawn validé : ({spawn_x},{spawn_y})")
 
         # Charger les animations du joueur

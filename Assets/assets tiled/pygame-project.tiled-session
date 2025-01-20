@@ -21,6 +21,18 @@
         "Basic_Grass_Biom_things.tsx": {
             "scaleInDock": 1
         },
+        "BigHouse.tmx": {
+            "scale": 3,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 235,
+                "y": 193
+            }
+        },
+        "C:/Users/7luna/Documents/YnovB2/Projet/Fireplace-Sheet.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
         "C:/Users/7luna/Documents/YnovB2/python/Python-Game/Basic_Grass_Biom_things.tsx": {
             "scaleInDock": 1
         },
@@ -65,6 +77,10 @@
         "C:/Users/7luna/Downloads/cristaux.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "Chair1.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
         },
         "Cristaux-Principaux.tsx": {
             "scaleInDock": 0.25,
@@ -144,6 +160,14 @@
         "farm.tsx": {
             "scaleInDock": 1
         },
+        "firstHouse.tmx": {
+            "scale": 3,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 237,
+                "y": 145.66666666666663
+            }
+        },
         "free_water_tiles1.tsx": {
             "scaleInDock": 1
         },
@@ -152,12 +176,16 @@
             "scaleInEditor": 1
         },
         "grotte.tmx": {
-            "scale": 0.33,
-            "selectedLayer": 6,
+            "scale": 1.5,
+            "selectedLayer": 7,
             "viewCenter": {
-                "x": 681.8181818181819,
-                "y": 936.3636363636364
+                "x": 266,
+                "y": 272.6666666666667
             }
+        },
+        "jeux de tuiles/Beach-and-caves-tileset_ALL_by_AxulArt.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
         },
         "jeux de tuiles/Cristaux-Principaux.tsx": {
             "scaleInDock": 0.33,
@@ -193,7 +221,14 @@
             "scaleInEditor": 2
         },
         "jeux de tuiles/cave_B.tsx": {
-            "scaleInEditor": 1
+            "scaleInDock": 2,
+            "scaleInEditor": 2
+        },
+        "jeux de tuiles/furniture.tsx": {
+            "dynamicWrapping": false
+        },
+        "jeux de tuiles/inside.tsx": {
+            "dynamicWrapping": false
         },
         "jeux de tuiles/map.tmx": {
             "scale": 0.5,
@@ -224,10 +259,10 @@
         },
         "mapv2.tmx": {
             "scale": 2,
-            "selectedLayer": 2,
+            "selectedLayer": 13,
             "viewCenter": {
-                "x": 965,
-                "y": 914
+                "x": 1252,
+                "y": 346.5
             }
         },
         "market_assets.tsx": {
@@ -270,18 +305,18 @@
     ],
     "project": "pygame-project.tiled-project",
     "recentFiles": [
-        "jeux de tuiles/cave_B.tsx",
+        "BigHouse.tmx",
         "mapv2.tmx",
+        "jeux de tuiles/cave_B.tsx",
+        "jeux de tuiles/Beach-and-caves-tileset_ALL_by_AxulArt.tsx",
+        "grotte.tmx",
         "jeux de tuiles/summer tilemap.tsx",
         "jeux de tuiles/TilesBases.tsx",
         "jeux de tuiles/spring tilemap.tsx",
         "jeux de tuiles/summer and spring items.tsx",
         "jeux de tuiles/cave.tsx",
-        "grotte.tmx",
         "jeux de tuiles/TEST.tsx",
-        "MAP.tmx",
-        "jeux de tuiles/map.tmx",
-        "jeux de tuiles/barrières et bout de cailloux.tsx"
+        "MAP.tmx"
     ],
     "tileset.lastUsedFilter": "Fichiers de jeu de tuiles Tiled (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
