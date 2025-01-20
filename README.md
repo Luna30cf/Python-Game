@@ -67,12 +67,14 @@ pip install pytmx
 
 <ins>Pour lancer le projet :</ins>
 
+- Avant le 19 janvier à 23h59  
 ```bash
 Python-Game> python .\Python-Karl\script.py
 ```
 
 OU
 
+- Le 20 janvier   
 ```bash
 Python-Game> python main.py
 ```
