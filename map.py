@@ -1,22 +1,21 @@
 import pygame
 import pytmx
 import json
+import teleport as t
 
 class Map:
     def __init__(self, tmx_file, collidable_json):
         """
-        Initialise la carte en chargeant le fichier TMX et les calques bloquants ainsi que les téléporteurs depuis un JSON.
+        Initialise la carte en chargeant le fichier TMX et les calques bloquants.
         """
         self.tmx_data = pytmx.util_pygame.load_pygame(tmx_file)
         self.tile_width = self.tmx_data.tilewidth
         self.tile_height = self.tmx_data.tileheight
         self.map_width = self.tmx_data.width
         self.map_height = self.tmx_data.height
-        self.collidable_tiles, self.teleporters_layer = self.load_layers(collidable_json)
-        self.scaled_tiles_cache = {}
-        self.teleporters = self.load_teleporters(collidable_json)
+        self.collidable_tiles = self.load_collidable_tiles(collidable_json)
+        self.teleporter = t.Teleporter()
         print(f"[DEBUG] Nombre total de tuiles bloquantes = {len(self.collidable_tiles)}")
-        print(f"[DEBUG] Nombre total de téléporteurs = {len(self.teleporters)}")
 
     def load_layers(self, json_layers_file):
         """

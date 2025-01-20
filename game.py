@@ -18,7 +18,7 @@ class Game:
         self.map = m.Map(self.current_map_file, "Python-Karl/collidable_layers.json")
 
         # Déterminer un spawn valide
-        spawn_x, spawn_y = self.find_valid_spawn(22, 55)
+        spawn_x, spawn_y = self.find_valid_spawn(22, 56)
         print(f"[DEBUG] Spawn validé : ({spawn_x},{spawn_y})")
 
         # Charger les animations du joueur
@@ -196,18 +196,13 @@ class Game:
 
     def check_teleporters(self):
         """
-        Vérifie si le joueur est dans une zone de téléportation et effectue le téléport si nécessaire.
+        Vérifie si le joueur doit être téléporté et effectue la téléportation.
         """
-        player_tile_x = int(round(self.player.position_x))
-        player_tile_y = int(round(self.player.position_y))
-
-        for teleporter in self.map.teleporters:
-            zone = teleporter["zone"]
-            # Vérifie si la position du joueur est à l'intérieur de la zone de téléportation
-            if zone.collidepoint(player_tile_x, player_tile_y):
-                print(f"[DEBUG] Téléportation déclenchée vers {teleporter['target_map']} à {teleporter['target_spawn']}")
-                self.load_map(teleporter["target_map"], teleporter["target_spawn"])
-                break  # Téléportation unique par mise à jour
+        new_map, new_position = self.map.teleporter.check_teleportation(self.player)
+        if new_map:
+            self.map = new_map
+            self.player.position_x, self.player.position_y = new_position
+            print(f"[INFO] Joueur téléporté à la nouvelle carte avec position {new_position}")
 
     def load_map(self, map_file, spawn_coords):
         """
